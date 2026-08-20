@@ -10,6 +10,16 @@ O portfólio foi pensado como um espaço para apresentar a identidade do autor, 
 - projetos realizados;
 - contato e redes sociais.
 
+## Integrantes
+
+[Barbara Marcella Inácio da Silva](https://github.com/Barbarainnacio)
+
+[Lucas Gabriel de Oliveira Franco](https://github.com/lucasfrgabriel)
+
+[Maria Clara Neri Stankunas](https://github.com/mariaclaranerii)
+
+[Yago Garzon Chaves](https://github.com/yagogarzon)
+
 ## Tecnologias
 
 - React
