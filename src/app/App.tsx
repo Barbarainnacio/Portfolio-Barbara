@@ -6,6 +6,7 @@ import { HomePage } from "./pages/HomePage";
 import { AboutPage } from "./pages/AboutPage";
 import { ProjectsPage } from "./pages/ProjectsPage";
 import { ContactPage } from "./pages/ContactPage";
+import { LanguageProvider } from "./translations/LanguageContext";
 
 type Page = "home" | "about" | "projects" | "contact";
 
@@ -16,7 +17,7 @@ const WATERMARKS: Record<Page, string> = {
   contact: "Contact.",
 };
 
-export default function App() {
+function AppContent() {
   const [page, setPage] = useState<Page>("home");
   const [drawerOpen, setDrawerOpen] = useState(false);
 
@@ -37,5 +38,13 @@ export default function App() {
 
       {page !== "contact" && <Footer />}
     </div>
+  );
+}
+
+export default function App() {
+  return (
+    <LanguageProvider>
+      <AppContent />
+    </LanguageProvider>
   );
 }
