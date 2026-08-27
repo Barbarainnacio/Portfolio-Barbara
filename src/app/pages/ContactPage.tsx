@@ -1,29 +1,14 @@
-// ContactPage.tsx
 import { useState } from "react";
 import { motion } from "motion/react";
-import { Mail, Github, Linkedin, ArrowUpRight, Send, type LucideIcon } from "lucide-react";
-import { useLanguage } from "../translations/LanguageContext";
+import { Mail, Github, Linkedin, ArrowUpRight, Send } from "lucide-react";
 
-type ContactCard = {
-  key: "email" | "github" | "linkedin";
-  icon: LucideIcon;
-  value: string;
-  href?: string;
-};
-
-const CARDS: ContactCard[] = [
-  {
-    key: "email",
-    icon: Mail,
-    value: "your.email@example.com",
-    href: "mailto:your.email@example.com",
-  },
-  { key: "github", icon: Github, value: "github.com/username", href: "#" },
-  { key: "linkedin", icon: Linkedin, value: "linkedin.com/in/username", href: "#" },
-] as const;
+const CARDS = [
+  { icon: Mail, label: "Email", value: "your.email@example.com", href: "mailto:your.email@example.com" },
+  { icon: Github, label: "GitHub", value: "github.com/username", href: "#" },
+  { icon: Linkedin, label: "LinkedIn", value: "linkedin.com/in/username", href: "#" },
+];
 
 export function ContactPage() {
-  const { t } = useLanguage();
   const [sent, setSent] = useState(false);
   const [form, setForm] = useState({ name: "", email: "", message: "" });
 
@@ -42,14 +27,20 @@ export function ContactPage() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
         className="text-foreground"
-        style={{
-          fontFamily: "'Syne', sans-serif",
-          fontWeight: 800,
-          fontSize: "clamp(3rem,7vw,5rem)",
-        }}
+        style={{ fontFamily: "'Syne', sans-serif", fontWeight: 800, fontSize: "clamp(3rem,7vw,5rem)" }}
       >
-        {t.contact.title}
+        Contact.
       </motion.h1>
+      <motion.p
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.5, delay: 0.1 }}
+        className="mt-4 max-w-xl text-muted-foreground"
+        style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "1.05rem" }}
+      >
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
+        ut labore et dolore magna aliqua.
+      </motion.p>
 
       <div className="mt-14 grid gap-10 lg:grid-cols-2">
         {/* contact cards */}
@@ -62,19 +53,10 @@ export function ContactPage() {
                   <Icon className="h-5 w-5" />
                 </span>
                 <div className="min-w-0 flex-1">
-                  <p
-                    className="text-sm text-muted-foreground"
-                    style={{ fontFamily: "'Fira Code', monospace" }}
-                  >
-                    {t.contact.cardLabels[c.key]}
+                  <p className="text-sm text-muted-foreground" style={{ fontFamily: "'Fira Code', monospace" }}>
+                    {c.label}
                   </p>
-                  <p
-                    className="truncate text-foreground"
-                    style={{
-                      fontFamily: "'Space Grotesk', sans-serif",
-                      fontSize: "1.05rem",
-                    }}
-                  >
+                  <p className="truncate text-foreground" style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "1.05rem" }}>
                     {c.value}
                   </p>
                 </div>
@@ -89,7 +71,7 @@ export function ContactPage() {
 
             return c.href ? (
               <motion.a
-                key={c.key}
+                key={c.label}
                 href={c.href}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -100,7 +82,7 @@ export function ContactPage() {
               </motion.a>
             ) : (
               <motion.div
-                key={c.key}
+                key={c.label}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.4, delay: 0.15 + i * 0.07 }}
@@ -116,22 +98,9 @@ export function ContactPage() {
         {sent ? (
           <div className="grid min-h-[300px] place-items-center rounded-xl border border-primary/40 bg-card/40 p-12 text-center backdrop-blur">
             <div>
-              <p
-                className="text-primary"
-                style={{ fontFamily: "'Fira Code', monospace" }}
-              >
-                {t.contact.messageSent}
-              </p>
-              <p
-                className="mt-3 text-foreground"
-                style={{
-                  fontFamily: "'Space Grotesk', sans-serif",
-                  fontSize: "1.2rem",
-                }}
-              >
-                {t.contact.thanksPrefix}{" "}
-                {form.name || t.contact.friendFallback}
-                {t.contact.thanksSuffix}
+              <p className="text-primary" style={{ fontFamily: "'Fira Code', monospace" }}>{`// message sent`}</p>
+              <p className="mt-3 text-foreground" style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "1.2rem" }}>
+                Thanks, {form.name || "friend"}! I'll be in touch soon.
               </p>
             </div>
           </div>
@@ -140,53 +109,38 @@ export function ContactPage() {
             <input
               id="contact-name"
               required
-              aria-label={t.contact.yourNameAriaLabel}
+              aria-label="Your name"
               className={field}
-              placeholder={t.contact.yourNamePlaceholder}
+              placeholder="Your name"
               value={form.name}
-              onChange={(e) =>
-                setForm((previous) => ({
-                  ...previous,
-                  name: e.target.value,
-                }))
-              }
+              onChange={(e) => setForm((previous) => ({ ...previous, name: e.target.value }))}
             />
             <input
               id="contact-email"
               required
-              aria-label={t.contact.yourEmailAriaLabel}
+              aria-label="Your email"
               type="email"
               className={field}
-              placeholder={t.contact.yourEmailPlaceholder}
+              placeholder="Your email"
               value={form.email}
-              onChange={(e) =>
-                setForm((previous) => ({
-                  ...previous,
-                  email: e.target.value,
-                }))
-              }
+              onChange={(e) => setForm((previous) => ({ ...previous, email: e.target.value }))}
             />
             <textarea
               id="contact-message"
               required
-              aria-label={t.contact.yourMessageAriaLabel}
+              aria-label="Your message"
               rows={6}
               className={`${field} resize-none`}
-              placeholder={t.contact.yourMessagePlaceholder}
+              placeholder="Your message"
               value={form.message}
-              onChange={(e) =>
-                setForm((previous) => ({
-                  ...previous,
-                  message: e.target.value,
-                }))
-              }
+              onChange={(e) => setForm((previous) => ({ ...previous, message: e.target.value }))}
             />
             <button
               type="submit"
               className="flex items-center gap-2 rounded-lg bg-primary px-6 py-3 text-primary-foreground transition-opacity hover:opacity-90"
               style={{ fontFamily: "'Space Grotesk', sans-serif" }}
             >
-              {t.contact.sendMessage} <Send className="h-4 w-4" />
+              Send Message <Send className="h-4 w-4" />
             </button>
           </form>
         )}

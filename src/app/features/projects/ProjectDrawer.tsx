@@ -3,7 +3,6 @@ import { motion, AnimatePresence } from "motion/react";
 import { X, Globe, Github, ExternalLink } from "lucide-react";
 import type { Project } from "../../data/portfolio";
 import { Image } from "../../shared/Image";
-import { useLanguage } from "../../translations/LanguageContext";
 
 export function ProjectDrawer({
   project,
@@ -12,8 +11,6 @@ export function ProjectDrawer({
   project: Project | null;
   onClose: () => void;
 }) {
-  const { t } = useLanguage();
-
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => e.key === "Escape" && onClose();
     window.addEventListener("keydown", onKey);
@@ -23,12 +20,7 @@ export function ProjectDrawer({
   return (
     <AnimatePresence>
       {project && (
-        <div
-          className="fixed inset-0 z-50"
-          role="dialog"
-          aria-modal="true"
-          aria-labelledby="project-drawer-title"
-        >
+        <div className="fixed inset-0 z-50" role="dialog" aria-modal="true" aria-labelledby="project-drawer-title">
           {/* overlay */}
           <motion.div
             initial={{ opacity: 0 }}
@@ -44,11 +36,7 @@ export function ProjectDrawer({
             initial={{ x: "100%" }}
             animate={{ x: 0 }}
             exit={{ x: "100%" }}
-            transition={{
-              type: "tween",
-              duration: 0.35,
-              ease: [0.22, 1, 0.36, 1],
-            }}
+            transition={{ type: "tween", duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
             className="absolute right-0 top-0 flex h-full w-full max-w-[640px] flex-col border-l border-border bg-card shadow-2xl"
           >
             {/* scroll content */}
@@ -57,89 +45,50 @@ export function ProjectDrawer({
                 <h2
                   id="project-drawer-title"
                   className="text-foreground"
-                  style={{
-                    fontFamily: "'Syne', sans-serif",
-                    fontWeight: 800,
-                    fontSize: "2rem",
-                  }}
+                  style={{ fontFamily: "'Syne', sans-serif", fontWeight: 800, fontSize: "2rem" }}
                 >
                   {project.title}
                 </h2>
                 <button
                   onClick={onClose}
-                  aria-label={t.projectDrawer.closeAriaLabel}
+                  aria-label="Close"
                   className="grid h-10 w-10 shrink-0 place-items-center rounded-full border border-border text-muted-foreground transition-colors hover:border-primary hover:text-foreground"
                 >
                   <X className="h-5 w-5" />
                 </button>
               </div>
-              <p
-                className="mt-2 text-muted-foreground"
-                style={{
-                  fontFamily: "'Space Grotesk', sans-serif",
-                  fontSize: "1.05rem",
-                }}
-              >
+              <p className="mt-2 text-muted-foreground" style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "1.05rem" }}>
                 {project.description}
               </p>
 
               <div className="mt-6 overflow-hidden rounded-xl border border-border">
-                <Image
-                  src={project.image}
-                  alt={project.title}
-                  className="h-64 w-full object-cover"
-                />
+                <Image src={project.image} alt={project.title} className="h-64 w-full object-cover" />
               </div>
 
-              <Section title={t.projectDrawer.about}>
-                <p
-                  className="leading-relaxed text-muted-foreground"
-                  style={{ fontFamily: "'Space Grotesk', sans-serif" }}
-                >
+              <Section title="About">
+                <p className="leading-relaxed text-muted-foreground" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
                   {project.about}
                 </p>
               </Section>
 
-              <Section title={t.projectDrawer.technologies}>
+              <Section title="Technologies">
                 <div className="flex flex-wrap gap-2">
                   {project.tags.map((tag, index) => (
-                    <span
-                      key={`${project.id}-tag-${index}`}
-                      className="rounded-lg bg-secondary px-3.5 py-1.5 text-sm text-foreground"
-                      style={{ fontFamily: "'Space Grotesk', sans-serif" }}
-                    >
+                    <span key={`${project.id}-tag-${index}`} className="rounded-lg bg-secondary px-3.5 py-1.5 text-sm text-foreground" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
                       {tag}
                     </span>
                   ))}
                 </div>
               </Section>
 
-              <Section
-                title={t.projectDrawer.website}
-                icon={<Globe className="h-5 w-5 text-primary" />}
-              >
-                <a
-                  href={project.website}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="break-all text-primary underline decoration-primary/40 underline-offset-4 transition-colors hover:decoration-primary"
-                  style={{ fontFamily: "'Space Grotesk', sans-serif" }}
-                >
+              <Section title="Website" icon={<Globe className="h-5 w-5 text-primary" />}>
+                <a href={project.website} target="_blank" rel="noreferrer" className="break-all text-primary underline decoration-primary/40 underline-offset-4 transition-colors hover:decoration-primary" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
                   {project.website}
                 </a>
               </Section>
 
-              <Section
-                title={t.projectDrawer.github}
-                icon={<Github className="h-5 w-5 text-primary" />}
-              >
-                <a
-                  href={project.github}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="break-all text-primary underline decoration-primary/40 underline-offset-4 transition-colors hover:decoration-primary"
-                  style={{ fontFamily: "'Space Grotesk', sans-serif" }}
-                >
+              <Section title="Github" icon={<Github className="h-5 w-5 text-primary" />}>
+                <a href={project.github} target="_blank" rel="noreferrer" className="break-all text-primary underline decoration-primary/40 underline-offset-4 transition-colors hover:decoration-primary" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
                   {project.github}
                 </a>
               </Section>
@@ -151,12 +100,9 @@ export function ProjectDrawer({
               target="_blank"
               rel="noreferrer"
               className="flex items-center justify-center gap-3 border-t border-border bg-secondary py-5 text-foreground transition-colors hover:bg-primary hover:text-primary-foreground"
-              style={{
-                fontFamily: "'Space Grotesk', sans-serif",
-                fontSize: "1.1rem",
-              }}
+              style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "1.1rem" }}
             >
-              {t.projectDrawer.openProject} <ExternalLink className="h-5 w-5" />
+              Open Project <ExternalLink className="h-5 w-5" />
             </a>
           </motion.aside>
         </div>
@@ -176,14 +122,7 @@ function Section({
 }) {
   return (
     <div className="mt-8">
-      <h3
-        className="mb-3 flex items-center gap-2 text-foreground"
-        style={{
-          fontFamily: "'Syne', sans-serif",
-          fontWeight: 700,
-          fontSize: "1.3rem",
-        }}
-      >
+      <h3 className="mb-3 flex items-center gap-2 text-foreground" style={{ fontFamily: "'Syne', sans-serif", fontWeight: 700, fontSize: "1.3rem" }}>
         {icon}
         {title}
       </h3>

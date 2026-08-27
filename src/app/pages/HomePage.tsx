@@ -1,15 +1,8 @@
 import { ArrowRight } from "lucide-react";
 import { motion } from "motion/react";
 import { PROFILE } from "../data/portfolio";
-import { useLanguage } from "../translations/LanguageContext";
 
-export function HomePage({
-  onNavigate,
-}: {
-  onNavigate: (p: "about" | "projects" | "contact") => void;
-}) {
-  const { t } = useLanguage();
-
+export function HomePage({ onNavigate }: { onNavigate: (p: "about" | "projects" | "contact") => void }) {
   return (
     <section className="relative z-10 mx-auto flex w-full max-w-[1400px] flex-1 flex-col justify-center px-6 py-16 md:px-24">
       <motion.p
@@ -19,7 +12,7 @@ export function HomePage({
         className="mb-4 text-muted-foreground"
         style={{ fontFamily: "'Fira Code', monospace" }}
       >
-        {t.home.greeting}
+        Hi all. I am
       </motion.p>
 
       <motion.h1
@@ -34,7 +27,7 @@ export function HomePage({
           lineHeight: 1.05,
         }}
       >
-        {t.home.imPrefix} {PROFILE.name}
+        I'm {PROFILE.name}
       </motion.h1>
 
       <motion.p
@@ -42,10 +35,7 @@ export function HomePage({
         animate={{ opacity: 1 }}
         transition={{ duration: 0.6, delay: 0.15 }}
         className="mt-3 text-[#615fff]"
-        style={{
-          fontFamily: "'Fira Code', monospace",
-          fontSize: "clamp(1.1rem,2vw,1.6rem)",
-        }}
+        style={{ fontFamily: "'Fira Code', monospace", fontSize: "clamp(1.1rem,2vw,1.6rem)" }}
       >
         {"> "}
         {PROFILE.role}
@@ -56,24 +46,22 @@ export function HomePage({
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, delay: 0.25 }}
         className="mt-8 max-w-2xl space-y-5 leading-relaxed text-muted-foreground"
-        style={{
-          fontFamily: "'Space Grotesk', sans-serif",
-          fontSize: "1.05rem",
-        }}
+        style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "1.05rem" }}
       >
         <p>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-          incididunt ut labore et dolore magna aliqua.
+          incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+          exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
         </p>
         <p>
           Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat
           nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
-          deserunt mollit anim. {t.home.anywaysYouCan}{" "}
+          deserunt mollit anim. Anyways, you can{" "}
           <button
             onClick={() => onNavigate("contact")}
             className="text-foreground underline decoration-primary underline-offset-4"
           >
-            {t.home.contactMe}
+            CONTACT ME
           </button>
           .
         </p>
@@ -87,7 +75,7 @@ export function HomePage({
         className="group mt-10 flex items-center gap-4 text-foreground"
         style={{ fontFamily: "'Space Grotesk', sans-serif" }}
       >
-        {t.home.seeMoreAboutMe}
+        See More About Me
         <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-2" />
       </motion.button>
     </section>
