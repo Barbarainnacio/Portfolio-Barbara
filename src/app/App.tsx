@@ -4,16 +4,18 @@ import { Header } from "./layout/Header";
 import { Footer } from "./layout/Footer";
 import { HomePage } from "./pages/HomePage";
 import { AboutPage } from "./pages/AboutPage";
+import { ExperiencesPage } from "./pages/ExperiencesPage";
 import { ProjectsPage } from "./pages/ProjectsPage";
 import { ContactPage } from "./pages/ContactPage";
 
-type Page = "home" | "about" | "projects" | "contact";
+type Page = "home" | "about" | "experiences" | "projects" | "contact";
 
 const WATERMARKS: Record<Page, string> = {
   home: "YN.",
-  about: "About Me.",
-  projects: "Projects.",
-  contact: "Contact.",
+  about: "Sobre Mim.",
+  experiences: "Experiências.",
+  projects: "Projetos.",
+  contact: "Contato.",
 };
 
 export default function App() {
@@ -32,6 +34,7 @@ export default function App() {
 
       {page === "home" && <HomePage onNavigate={navigate} />}
       {page === "about" && <AboutPage onNavigate={navigate} />}
+      {page === "experiences" && <ExperiencesPage />}
       {page === "projects" && <ProjectsPage onDrawerChange={setDrawerOpen} />}
       {page === "contact" && <ContactPage />}
 

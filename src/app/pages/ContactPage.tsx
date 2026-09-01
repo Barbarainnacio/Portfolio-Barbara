@@ -57,7 +57,7 @@ export function ContactPage() {
         className="text-foreground"
         style={{ fontFamily: "'Syne', sans-serif", fontWeight: 800, fontSize: "clamp(3rem,7vw,5rem)" }}
       >
-        Contact.
+        Contato.
       </motion.h1>
       <motion.p
         initial={{ opacity: 0 }}
@@ -127,7 +127,7 @@ export function ContactPage() {
           <div className="grid min-h-[300px] place-items-center rounded-xl border border-primary/40 bg-card/40 p-12 text-center backdrop-blur">
             <div>
               <p className="text-foreground" style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "1.2rem" }}>
-                Thanks, {form.name || "friend"}! I'll be in touch soon.
+                Obrigado, {form.name || "friend"}! Entrarei em contato em breve.
               </p>
             </div>
           </div>
@@ -137,9 +137,9 @@ export function ContactPage() {
               id="contact-name"
               name="name"
               required
-              aria-label="Your name"
+              aria-label="Seu nome"
               className={field}
-              placeholder="Your name"
+              placeholder="Seu nome"
               value={form.name}
               onChange={(e) => setForm((previous) => ({ ...previous, name: e.target.value }))}
             />
@@ -147,10 +147,10 @@ export function ContactPage() {
               id="contact-email"
               name="email"
               required
-              aria-label="Your email"
+              aria-label="Seu email"
               type="email"
               className={field}
-              placeholder="Your email"
+              placeholder="Seu email"
               value={form.email}
               onChange={(e) => setForm((previous) => ({ ...previous, email: e.target.value }))}
             />
@@ -158,10 +158,10 @@ export function ContactPage() {
               id="contact-message"
               name="message"
               required
-              aria-label="Your message"
+              aria-label="Sua mensagem"
               rows={6}
               className={`${field} resize-none`}
-              placeholder="Your message"
+              placeholder="Sua mensagem"
               value={form.message}
               onChange={(e) => setForm((previous) => ({ ...previous, message: e.target.value }))}
             />
@@ -176,7 +176,7 @@ export function ContactPage() {
               className="flex items-center gap-2 rounded-lg bg-primary px-6 py-3 text-primary-foreground transition-opacity hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-70"
               style={{ fontFamily: "'Space Grotesk', sans-serif" }}
             >
-              {loading ? "Sending..." : "Send Message"} <Send className="h-4 w-4" />
+              {loading ? "Enviando..." : "Mandar Mensagem"} <Send className="h-4 w-4" />
             </button>
           </form>
         )}

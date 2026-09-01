@@ -26,7 +26,7 @@ export function ProjectsPage({ onDrawerChange }: { onDrawerChange?: (open: boole
         className="mb-12 text-foreground"
         style={{ fontFamily: "'Syne', sans-serif", fontWeight: 800, fontSize: "clamp(3rem,7vw,5rem)" }}
       >
-        Projects.
+        Projetos.
       </motion.h1>
 
       <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">

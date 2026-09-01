@@ -1,20 +1,25 @@
 export const PROFILE = {
-  name: "Your Name",
-  role: "Your Role",
-  logoName: "your-name",
-  username: "@username",
-  githubUrl: "https://github.com/example/url",
+  name: "Seu Nome",
+  role: "Seu Cargo",
+  logoName: "seu-nome",
+  username: "@seunome",
+  githubUrl: "https://github.com/seunome",
 };
 
-export type SocialKey = "linkedin" | "github";
+export type SocialKey = "linkedin" | "github" | "whatsapp";
 
 export const SOCIALS: { key: SocialKey; label: string; href: string }[] = [
   { key: "linkedin", label: "LinkedIn", href: "#" },
   { key: "github", label: "GitHub", href: "#" },
+  { key: "whatsapp", label: "WhatsApp", href: "#" },
 ];
 
-const LOREM_LONG =
-  "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.";
+export const ABOUT_ME_PT = "Este é um texto genérico de exemplo para a seção Sobre Mim. Aqui você deve escrever um pouco sobre a sua trajetória, quem você é fora do código, suas paixões na tecnologia e seus objetivos de carreira. Substitua este conteúdo por um texto com a sua própria identidade, destacando o que te torna único como profissional e suas áreas de maior interesse. Utilize este espaço para criar conexão com quem está visitando o seu portfólio.";
+
+export const ABOUT_ME_EN = "This is a generic example text for the About Me section. Here you should write a bit about your journey, who you are outside of coding, your passions in technology, and your career goals. Replace this content with a text that reflects your own identity, highlighting what makes you unique as a professional and your main areas of interest. Use this space to connect with whoever is visiting your portfolio.";
+
+const LOREM_LONG_PT = "Breve descrição sobre as atividades desempenhadas nesta experiência ou formação. Foco em tecnologias utilizadas, impacto das ações e aprendizados ao longo do período.";
+const LOREM_LONG_EN = "Brief description of the activities performed in this experience or education. Focus on technologies used, impact of actions, and learnings over the period.";
 
 export type Experience = {
   company: string;
@@ -25,16 +30,16 @@ export type Experience = {
 
 export const EXPERIENCES: Experience[] = [
   {
-    company: "Company Name",
-    role: "Fullstack Developer",
-    period: "2023 - Present",
-    body: LOREM_LONG,
+    company: "Nome da Empresa",
+    role: "Desenvolvedor Fullstack",
+    period: "2023 - Presente",
+    body: LOREM_LONG_PT,
   },
   {
-    company: "Startup Name",
-    role: "Software Engineering Intern",
+    company: "Nome da Startup",
+    role: "Estagiário de Engenharia de Software",
     period: "2021 - 2022",
-    body: LOREM_LONG,
+    body: LOREM_LONG_PT,
   },
 ];
 
@@ -45,18 +50,35 @@ export type Education = {
   body: string;
 };
 
-export const EDUCATION: Education[] = [
+// Formação em Português
+export const EDUCATION_PT: Education[] = [
   {
-    institution: "University Name",
-    degree: "B.Sc. in Computer Science",
+    institution: "Nome da Universidade",
+    degree: "Bacharelado em Ciência da Computação",
     period: "2019 - 2023",
-    body: LOREM_LONG,
+    body: LOREM_LONG_PT,
   },
   {
-    institution: "College Name",
-    degree: "Technical Diploma in Systems Development",
+    institution: "Nome da Instituição Técnica",
+    degree: "Técnico em Desenvolvimento de Sistemas",
     period: "2017 - 2019",
-    body: LOREM_LONG,
+    body: LOREM_LONG_PT,
+  },
+];
+
+// Formação em Inglês
+export const EDUCATION_EN: Education[] = [
+  {
+    institution: "University Name",
+    degree: "Bachelor of Computer Science",
+    period: "2019 - 2023",
+    body: LOREM_LONG_EN,
+  },
+  {
+    institution: "Technical Institution Name",
+    degree: "Systems Development Technician",
+    period: "2017 - 2019",
+    body: LOREM_LONG_EN,
   },
 ];
 
@@ -73,19 +95,16 @@ export type Project = {
   link: string;
 };
 
-const LOREM =
-  "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.";
-
-const ABOUT_LOREM =
-  "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.";
+const LOREM_PT = "Breve descrição do projeto e das tecnologias aplicadas.";
+const ABOUT_LOREM_PT = "Descrição mais aprofundada sobre o desenvolvimento do projeto, os desafios superados e as motivações por trás dele.";
 
 export const PROJECTS: Project[] = [
   {
     id: "project-dashboard",
-    title: "Project Name",
-    category: "Projects",
-    description: LOREM,
-    about: ABOUT_LOREM,
+    title: "Nome do Projeto",
+    category: "Projetos",
+    description: LOREM_PT,
+    about: ABOUT_LOREM_PT,
     image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080",
     tags: ["React", "TypeScript", "Node"],
     website: "https://example.com",
@@ -94,62 +113,14 @@ export const PROJECTS: Project[] = [
   },
   {
     id: "project-open-source",
-    title: "Project Name",
+    title: "Projeto Open Source",
     category: "Open Source",
-    description: LOREM,
-    about: ABOUT_LOREM,
+    description: LOREM_PT,
+    about: ABOUT_LOREM_PT,
     image: "https://images.unsplash.com/photo-1686061592689-312bbfb5c055?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080",
     tags: ["React", "React Query", "TS"],
     website: "https://example.com",
     github: "https://github.com/username/project",
     link: "#",
-  },
-  {
-    id: "project-dev-tools",
-    title: "Project Name",
-    category: "Dev Tools",
-    description: LOREM,
-    about: ABOUT_LOREM,
-    image: "https://images.unsplash.com/photo-1607705703571-c5a8695f18f6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080",
-    tags: ["React", "a11y", "npm"],
-    website: "https://example.com",
-    github: "https://github.com/username/project",
-    link: "#",
-  },
-  {
-    id: "project-commerce",
-    title: "Project Name",
-    category: "Projects",
-    description: LOREM,
-    about: ABOUT_LOREM,
-    image: "https://images.unsplash.com/photo-1763718528755-4bca23f82ac3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080",
-    tags: ["Next.js", "Stripe", "Postgres"],
-    website: "https://example.com",
-    github: "https://github.com/username/project",
-    link: "#",
-  },
-  {
-    id: "project-design-system",
-    title: "Project Name",
-    category: "Designs",
-    description: LOREM,
-    about: ABOUT_LOREM,
-    image: "https://images.unsplash.com/photo-1625838144804-300f3907c110?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080",
-    tags: ["Design Tools", "Design System"],
-    website: "https://example.com",
-    github: "https://github.com/username/project",
-    link: "#",
-  },
-  {
-    id: "project-ai",
-    title: "Project Name",
-    category: "Projects",
-    description: LOREM,
-    about: ABOUT_LOREM,
-    image: "https://images.unsplash.com/photo-1733412505442-36cfa59a4240?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080",
-    tags: ["AI", "React", "Python"],
-    website: "https://example.com",
-    github: "https://github.com/username/project",
-    link: "#",
-  },
+  }
 ];

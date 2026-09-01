@@ -12,7 +12,7 @@ export function HomePage({ onNavigate }: { onNavigate: (p: "about" | "projects" 
         className="mb-4 text-muted-foreground"
         style={{ fontFamily: "'Fira Code', monospace" }}
       >
-        Hi all. I am
+        Olá! Eu sou
       </motion.p>
 
       <motion.h1
@@ -27,7 +27,7 @@ export function HomePage({ onNavigate }: { onNavigate: (p: "about" | "projects" 
           lineHeight: 1.05,
         }}
       >
-        I'm {PROFILE.name}
+        {PROFILE.name}
       </motion.h1>
 
       <motion.p
@@ -61,7 +61,7 @@ export function HomePage({ onNavigate }: { onNavigate: (p: "about" | "projects" 
             onClick={() => onNavigate("contact")}
             className="text-foreground underline decoration-primary underline-offset-4"
           >
-            CONTACT ME
+            entre em contato comigo
           </button>
           .
         </p>
