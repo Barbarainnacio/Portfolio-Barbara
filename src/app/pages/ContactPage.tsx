@@ -8,13 +8,41 @@ const CARDS = [
   { icon: Linkedin, label: "LinkedIn", value: "linkedin.com/in/username", href: "#" },
 ];
 
+const WEB3FORMS_ACCESS_KEY = import.meta.env.VITE_WEB3FORMS_ACCESS_KEY;
+
 export function ContactPage() {
   const [sent, setSent] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
   const [form, setForm] = useState({ name: "", email: "", message: "" });
 
-  const submit = (e: React.FormEvent) => {
+  const submit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setSent(true);
+    setLoading(true);
+    setError("");
+
+    const formData = new FormData(e.currentTarget);
+    formData.append("access_key", WEB3FORMS_ACCESS_KEY);
+    formData.append("subject", `Novo contato do portfólio: ${form.name}`);
+
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        body: formData,
+      });
+
+      const data = await response.json();
+
+      if (!response.ok || !data.success) {
+        throw new Error(data.message || "Unable to send your message right now.");
+      }
+
+      setSent(true);
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Unable to send your message right now.");
+    } finally {
+      setLoading(false);
+    }
   };
 
   const field =
@@ -98,8 +126,7 @@ export function ContactPage() {
         {sent ? (
           <div className="grid min-h-[300px] place-items-center rounded-xl border border-primary/40 bg-card/40 p-12 text-center backdrop-blur">
             <div>
-              <p className="text-primary" style={{ fontFamily: "'Fira Code', monospace" }}>{`// message sent`}</p>
-              <p className="mt-3 text-foreground" style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "1.2rem" }}>
+              <p className="text-foreground" style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "1.2rem" }}>
                 Thanks, {form.name || "friend"}! I'll be in touch soon.
               </p>
             </div>
@@ -108,6 +135,7 @@ export function ContactPage() {
           <form onSubmit={submit} className="space-y-4">
             <input
               id="contact-name"
+              name="name"
               required
               aria-label="Your name"
               className={field}
@@ -117,6 +145,7 @@ export function ContactPage() {
             />
             <input
               id="contact-email"
+              name="email"
               required
               aria-label="Your email"
               type="email"
@@ -127,6 +156,7 @@ export function ContactPage() {
             />
             <textarea
               id="contact-message"
+              name="message"
               required
               aria-label="Your message"
               rows={6}
@@ -135,12 +165,18 @@ export function ContactPage() {
               value={form.message}
               onChange={(e) => setForm((previous) => ({ ...previous, message: e.target.value }))}
             />
+            {error && (
+              <p className="text-sm text-red-400" style={{ fontFamily: "'Fira Code', monospace" }}>
+                {error}
+              </p>
+            )}
             <button
               type="submit"
-              className="flex items-center gap-2 rounded-lg bg-primary px-6 py-3 text-primary-foreground transition-opacity hover:opacity-90"
+              disabled={loading}
+              className="flex items-center gap-2 rounded-lg bg-primary px-6 py-3 text-primary-foreground transition-opacity hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-70"
               style={{ fontFamily: "'Space Grotesk', sans-serif" }}
             >
-              Send Message <Send className="h-4 w-4" />
+              {loading ? "Sending..." : "Send Message"} <Send className="h-4 w-4" />
             </button>
           </form>
         )}
