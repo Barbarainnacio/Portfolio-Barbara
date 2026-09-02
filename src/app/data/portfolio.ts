@@ -107,65 +107,108 @@ export const EDUCATION_EN: Education[] = [
 // PROJETOS
 // =========================
 
-export type Project = {
-  id: string;
-  title: string;
-  category: string;
-  description: string;
-  about: string;
-  image: string;
-  tags: string[];
-  website: string;
-  github: string;
-  link: string;
-};
+    export type Project = {
+      id: string;
+      title: string;
+      category: string;
+      description: string;
+      about: string;
+      image: string;
+      tags: string[];
+      website: string;
+      github: string;
+      link: string;
+    };
 
-export const PROJECTS: Project[] = [
-  {
-    id: "oficina-mecanica",
-    title: "Sistema para Oficina Mecânica",
-    category: "Projeto Acadêmico",
+    export const PROJECTS: Project[] = [
+      {
+        id: "simulador-sap",
+        title: "Simulador SAP",
+        category: "Projeto Acadêmico",
+        description:
+          "Projeto acadêmico desenvolvido com foco na simulação e aplicação de conceitos estudados durante a graduação.",
+        about:
+          "Projeto desenvolvido durante a graduação com o objetivo de aplicar conceitos de programação e desenvolvimento de sistemas por meio da construção de um simulador. O projeto contribuiu para o desenvolvimento de habilidades em lógica, implementação de funcionalidades e trabalho com aplicações web.",
+        image:
+          "https://images.unsplash.com/photo-1515879218367-8466d910aaa4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080",
+        tags: ["JavaScript", "HTML", "CSS"],
+        website: "#",
+        github: "https://github.com/Barbarainnacio/simuladorSap-",
+        link: "https://github.com/Barbarainnacio/simuladorSap-",
+      },
 
-    description:
-      "Sistema desenvolvido para auxiliar no gerenciamento de processos de uma oficina mecânica.",
+      {
+        id: "folha-pagamento",
+        title: "Sistema de Folha de Pagamento",
+        category: "Projeto Acadêmico — Programação Orientada a Objetos",
+        description:
+          "Sistema desenvolvido para realizar cálculos relacionados à folha de pagamento utilizando conceitos de orientação a objetos.",
+        about:
+          "Projeto acadêmico desenvolvido em Java utilizando Programação Orientada a Objetos. O sistema implementa regras de negócio relacionadas à folha de pagamento, incluindo cálculos de INSS, IRRF, FGTS, vale-transporte, benefícios e salário líquido. O projeto também utiliza testes unitários para validar os cálculos implementados.",
+        image:
+          "https://images.unsplash.com/photo-1554224155-6726b3ff858f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080",
+        tags: ["Java", "POO", "JUnit"],
+        website: "#",
+        github: "#",
+        link: "#",
+      },
 
-    about:
-      "Projeto acadêmico desenvolvido com foco em funcionalidades como cadastro de clientes e veículos, controle de peças, orçamentos e organização dos processos da oficina.",
+      {
+        id: "oficina-mecanica",
+        title: "Sistema para Oficina Mecânica",
+        category: "Projeto Acadêmico — Trabalho Interdisciplinar II",
+        description:
+          "Sistema desenvolvido para auxiliar no gerenciamento dos processos de uma oficina mecânica.",
+        about:
+          "Projeto desenvolvido em equipe durante o Trabalho Interdisciplinar II do curso de Engenharia de Software. O sistema foi criado para auxiliar na organização dos processos de uma oficina mecânica, incluindo cadastro de clientes e veículos, controle de peças, elaboração de orçamentos e gerenciamento das atividades da oficina.",
+        image:
+          "https://images.unsplash.com/photo-1486262715619-67b85e0b08d3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080",
+        tags: ["Java", "Spring Boot", "HTML", "CSS"],
+        website: "#",
+        github: "#",
+        link: "#",
+      },
 
-    image:
-      "https://images.unsplash.com/photo-1486262715619-67b85e0b08d3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080",
+      {
+        id: "instituto-transformar",
+        title: "Instituto Transformar e Evoluir",
+        category: "Projeto Acadêmico — Trabalho Interdisciplinar III • 2026.1",
+        description:
+          "Sistema de gestão desenvolvido para facilitar o gerenciamento de atendimentos, pacientes, profissionais, agendamentos e eventos.",
+        about:
+          "Projeto acadêmico desenvolvido em equipe durante o Trabalho Interdisciplinar III do curso de Engenharia de Software. O sistema foi criado para o Instituto Transformar e Evoluir e permite o gerenciamento de pacientes, profissionais, serviços, atendimentos, agendamentos e eventos. A aplicação possui diferentes perfis de usuário, autenticação e funcionalidades relacionadas à privacidade e proteção de dados.",
+        image:
+          "https://images.unsplash.com/photo-1559757175-0eb30cd8c063?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080",
+        tags: [
+          "React",
+          "TypeScript",
+          "Node.js",
+          "Fastify",
+          "SQLite",
+          "Docker",
+        ],
+        website: "#",
+        github:
+          "https://github.com/ICEI-PUC-Minas-PMGES-TI/pmg-es-2026-1-ti3-9577100-instituto-transformar",
+        link:
+          "https://github.com/ICEI-PUC-Minas-PMGES-TI/pmg-es-2026-1-ti3-9577100-instituto-transformar",
+      },
 
-    tags: ["Java", "Spring Boot", "HTML", "CSS"],
-
-    website: "#",
-
-    // TROCAR depois pelo link do repositório deste projeto
-    github: "#",
-
-    link: "#",
-  },
-
-  {
-    id: "folha-pagamento",
-    title: "Sistema de Folha de Pagamento",
-    category: "Projeto Acadêmico",
-
-    description:
-      "Aplicação desenvolvida para realizar cálculos relacionados à folha de pagamento.",
-
-    about:
-      "Projeto desenvolvido utilizando programação orientada a objetos, com regras para cálculo de descontos e benefícios como INSS, IRRF, FGTS, vale-transporte e salário líquido.",
-
-    image:
-      "https://images.unsplash.com/photo-1554224155-6726b3ff858f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080",
-
-    tags: ["Java", "POO", "JUnit"],
-
-    website: "#",
-
-    // TROCAR depois pelo link do repositório deste projeto
-    github: "#",
-
-    link: "#",
-  },
-];
+      {
+        id: "ti4",
+        title: "Projeto Trabalho Interdisciplinar IV",
+        category: "Projeto Acadêmico — Em desenvolvimento • 2026.2",
+        description:
+          "Projeto acadêmico atualmente em desenvolvimento durante o Trabalho Interdisciplinar IV.",
+        about:
+          "Projeto desenvolvido em equipe durante o Trabalho Interdisciplinar IV do curso de Engenharia de Software da PUC Minas. O projeto está atualmente em fase de desenvolvimento e será atualizado ao longo do semestre conforme novas funcionalidades e tecnologias forem definidas e implementadas.",
+        image:
+          "https://images.unsplash.com/photo-1498050108023-c5249f4df085?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080",
+        tags: ["Em desenvolvimento"],
+        website: "#",
+        github:
+          "https://github.com/ICEI-PUC-Minas-PMGES-TI/pmg-es-2026-2-ti4-3170100-dujov",
+        link:
+          "https://github.com/ICEI-PUC-Minas-PMGES-TI/pmg-es-2026-2-ti4-3170100-dujov",
+      },
+    ];
