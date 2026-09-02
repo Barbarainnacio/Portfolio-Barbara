@@ -2,7 +2,11 @@ import { ArrowRight } from "lucide-react";
 import { motion } from "motion/react";
 import { PROFILE } from "../data/portfolio";
 
-export function HomePage({ onNavigate }: { onNavigate: (p: "about" | "projects" | "contact") => void }) {
+export function HomePage({
+  onNavigate,
+}: {
+  onNavigate: (p: "about" | "projects" | "contact") => void;
+}) {
   return (
     <section className="relative z-10 mx-auto flex w-full max-w-[1400px] flex-1 flex-col justify-center px-6 py-16 md:px-24">
       <motion.p
@@ -34,8 +38,11 @@ export function HomePage({ onNavigate }: { onNavigate: (p: "about" | "projects" 
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.6, delay: 0.15 }}
-        className="mt-3 text-[#615fff]"
-        style={{ fontFamily: "'Fira Code', monospace", fontSize: "clamp(1.1rem,2vw,1.6rem)" }}
+        className="mt-3 text-primary"
+        style={{
+          fontFamily: "'Fira Code', monospace",
+          fontSize: "clamp(1.1rem,2vw,1.6rem)",
+        }}
       >
         {"> "}
         {PROFILE.role}
@@ -46,22 +53,28 @@ export function HomePage({ onNavigate }: { onNavigate: (p: "about" | "projects" 
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, delay: 0.25 }}
         className="mt-8 max-w-2xl space-y-5 leading-relaxed text-muted-foreground"
-        style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "1.05rem" }}
+        style={{
+          fontFamily: "'Space Grotesk', sans-serif",
+          fontSize: "1.05rem",
+        }}
       >
         <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-          incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-          exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+          Estudante de Engenharia de Software na PUC Minas e Coordenadora
+          de Operações na Split Fast. Tenho interesse em tecnologia,
+          desenvolvimento de software e criação de soluções que tornem
+          processos mais eficientes.
         </p>
+
         <p>
-          Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat
-          nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
-          deserunt mollit anim. Anyways, you can{" "}
+          Ao longo da minha trajetória profissional e acadêmica, venho
+          desenvolvendo habilidades em organização, resolução de problemas,
+          trabalho em equipe e tecnologia. Quer saber mais sobre mim ou trocar
+          uma ideia?{" "}
           <button
             onClick={() => onNavigate("contact")}
             className="text-foreground underline decoration-primary underline-offset-4"
           >
-            entre em contato comigo
+            Entre em contato comigo
           </button>
           .
         </p>
@@ -75,7 +88,7 @@ export function HomePage({ onNavigate }: { onNavigate: (p: "about" | "projects" 
         className="group mt-10 flex items-center gap-4 text-foreground"
         style={{ fontFamily: "'Space Grotesk', sans-serif" }}
       >
-        See More About Me
+        Ver mais sobre mim
         <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-2" />
       </motion.button>
     </section>
